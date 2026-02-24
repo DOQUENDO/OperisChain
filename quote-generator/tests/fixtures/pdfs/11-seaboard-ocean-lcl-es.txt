@@ -1,0 +1,62 @@
+══════════════════════════════════════════════════════════
+         SEABOARD MARINE — OCEAN LCL RATE CARD
+        Colombia → Caribbean / Central America 2026
+══════════════════════════════════════════════════════════
+
+Fecha Efectiva: 1 de Marzo, 2026
+Vencimiento: 30 de Abril, 2026
+Servicio: LCL Consolidado
+Moneda: USD
+Cliente: OperisChain Logistics SAS
+
+─── RUTA: COCLO → PAPTY (Cartagena → Ciudad de Panamá) ────
+
+Peso/Volumen          Tarifa USD        Tránsito (días)
+────────────────      ───────────       ───────────────
+Por CBM               USD 85/CBM        5-7
+Por tonelada (1000kg) USD 45/ton        5-7
+Mínimo facturable     USD 150           5-7
+
+─── RUTA: COCLO → JMKIN (Cartagena → Kingston, Jamaica) ───
+
+Peso/Volumen          Tarifa USD        Tránsito (días)
+────────────────      ───────────       ───────────────
+Por CBM               USD 110/CBM       7-10
+Por tonelada          USD 55/ton        7-10
+Mínimo facturable     USD 175           7-10
+
+─── RUTA: COBUN → USHOU (Buenaventura → Houston) ─────────
+
+Peso/Volumen          Tarifa USD        Tránsito (días)
+────────────────      ───────────       ───────────────
+Por CBM               USD 130/CBM       10-14
+Por tonelada          USD 65/ton        10-14
+Mínimo facturable     USD 200           10-14
+
+─── RUTA: COBUN → USMIA (Buenaventura → Miami) ───────────
+
+Peso/Volumen          Tarifa USD        Tránsito (días)
+────────────────      ───────────       ───────────────
+Por CBM               USD 120/CBM       8-12
+Por tonelada          USD 60/ton        8-12
+Mínimo facturable     USD 185           8-12
+
+Recargos (aplican por embarque):
+  • BAF (Bunker):            USD 35/CBM — NO INCLUIDO
+  • THC Origen (Cartagena):  USD 25/CBM — NO INCLUIDO
+  • THC Origen (B/ventura):  USD 22/CBM — NO INCLUIDO
+  • THC Destino:             Variable según puerto — NO INCLUIDO
+  • ISPS:                    USD 8/BL — INCLUIDO
+  • Documentation (BL Fee):  USD 65/BL — NO INCLUIDO
+  • Customs clearance:       Por cuenta del cliente
+  • Seguro de carga:         0.45% valor declarado — NO INCLUIDO
+
+Notas:
+- Se aplica la mayor entre peso y volumen (1 CBM = 1000 kg)
+- Frecuencia: Semanal desde Cartagena, quincenal desde Buenaventura
+- CFS Cut-off: 3 días antes de zarpe
+- Mercancía peligrosa: consultar caso por caso
+
+Tarifas sujetas a disponibilidad de espacio y equipo.
+
+Contacto: ventas@seaboardmarine.com | +57 605 660 2200

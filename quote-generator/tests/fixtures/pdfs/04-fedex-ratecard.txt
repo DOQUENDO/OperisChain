@@ -1,0 +1,62 @@
+══════════════════════════════════════════════════════════
+                 FEDEX INTERNATIONAL PRIORITY
+                  AIR FREIGHT RATE CARD 2026
+══════════════════════════════════════════════════════════
+
+Effective Date: February 1, 2026
+Expiration: March 31, 2026
+Region: Colombia (CO) — Outbound
+Currency: USD
+Account: OperisChain Logistics SAS
+
+─── ROUTE: BOG → MIA (Bogotá to Miami) ────────────────
+
+Weight Break (kg)    Rate (USD/kg)    Transit (days)
+─────────────────    ─────────────    ──────────────
+Min - 45             4.20             1-2
+45 - 100             3.10             1-2
+100 - 300            2.75             2
+300 - 500            2.40             2
+500 - 1000           2.10             2-3
+1000+                1.85             3
+
+Surcharges (applied per kg, in addition to base rate):
+  • Fuel Surcharge (FSC):     USD 0.42/kg — NOT INCLUDED
+  • Security Surcharge:       USD 0.08/kg — NOT INCLUDED
+  • BAF:                      INCLUDED in base rate
+  • Handling (Origin):        USD 0.25/kg — NOT INCLUDED
+
+─── ROUTE: BOG → JFK (Bogotá to New York) ─────────────
+
+Weight Break (kg)    Rate (USD/kg)    Transit (days)
+─────────────────    ─────────────    ──────────────
+Min - 45             4.50             2
+45 - 100             3.35             2
+100 - 300            2.95             2
+300 - 500            2.60             2-3
+500 - 1000           2.30             3
+1000+                2.05             3
+
+Surcharges: Same as BOG-MIA route above.
+
+─── ROUTE: MDE → MIA (Medellín to Miami) ──────────────
+
+Weight Break (kg)    Rate (USD/kg)    Transit (days)
+─────────────────    ─────────────    ──────────────
+Min - 45             4.40             2
+45 - 100             3.25             2
+100 - 300            2.85             2
+300 - 500            2.50             2-3
+500 - 1000           2.20             3
+1000+                1.95             3
+
+Surcharges: Same as BOG-MIA route above.
+
+═══════════════════════════════════════════════════════
+Terms & Conditions:
+  - Rates are door-to-airport unless otherwise specified
+  - Chargeable weight = max(actual, volumetric)
+  - Volumetric factor: 6000 cm³ = 1 kg
+  - Hazmat/DG shipments: add 50% surcharge
+  - Rates subject to space availability
+═══════════════════════════════════════════════════════

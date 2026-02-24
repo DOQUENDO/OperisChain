@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OperisChain — AI-Powered Operational Automation for Freight Forwarders</title>
+  <meta name="description"
+    content="OperisChain reduces operational overhead by 30% for freight forwarders in LatAm. Automated quoting, document search, email triage, and compliance — all powered by AI.">
+  <meta name="keywords"
+    content="freight forwarding, operational automation, logistics AI, LatAm, carrier rates, compliance, document search, supply chain">
+  <meta property="og:title" content="OperisChain — Operational Automation for Freight Forwarders">
+  <meta property="og:description"
+    content="Stop spending 60% of your day on repetitive document work. OperisChain automates quoting, document search, email triage, and compliance for freight forwarders in LatAm.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css">
+  <link rel=\"icon\" type=\"image/png\" href=\"logo.png\">
+</head>
+
+<body>
+
+  <!-- ═══════ Background Canvas ═══════ -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ═══════ NAVIGATION ═══════ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <img src="logo-icon.png" alt="" class="nav-logo-icon">
+        <span class="nav-logo-text">Operis<span>Chain</span></span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#problem" data-i18n="nav.problem">Problem</a>
+        <a href="#modules" data-i18n="nav.modules">Modules</a>
+        <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
+        <a href="#why-us" data-i18n="nav.why">Why Us</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </div>
+
+      <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+        <span class="lang-label lang-label--en active">EN</span>
+        <span class="lang-label lang-label--es">ES</span>
+      </button>
+
+      <button class="nav-cta" onclick="openDemoModal()" data-i18n="nav.cta">Book a Demo →</button>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero section" id="hero">
+    <div class="glow-orb glow-orb--1"></div>
+    <div class="glow-orb glow-orb--2"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">Built for LatAm Freight Forwarders</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span data-i18n="hero.title.1">Your Operations Team,</span><br>
+          <span class="gradient-text" data-i18n="hero.title.2">Supercharged by AI</span>
+        </h1>
+
+        <p class="hero-subtitle" data-i18n="hero.subtitle">
+          OperisChain automates the document-heavy workflows draining your freight forwarding team — quotation
+          generation, document search, email triage, and customs compliance. Reduce operational overhead by 30%.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="openDemoModal()" data-i18n="hero.cta.primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Book a Demo
+          </button>
+          <a href="#modules" class="btn-secondary" data-i18n="hero.cta.secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            Explore Modules
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-value"><span class="counter" data-target="30">0</span>%</span>
+            <span class="hero-stat-label" data-i18n="hero.stat1.label">Overhead Reduced</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value counter" data-target="4">0</span>
+            <span class="hero-stat-label" data-i18n="hero.stat2.label">Automation Modules</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value"><span class="counter" data-target="3">0</span> Weeks</span>
+            <span class="hero-stat-label" data-i18n="hero.stat3.label">To Deployment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-image-container">
+          <img src="assets/hero-dashboard.png" alt="OperisChain operational automation dashboard for freight forwarders"
+            width="600" height="400" loading="eager">
+        </div>
+        <div class="floating-badge floating-badge--confidence" data-i18n="hero.badge.modules">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          4 modules deployed
+        </div>
+        <div class="floating-badge floating-badge--warning" data-i18n="hero.badge.ai">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M13 2L3 14h9l-1 10 10-12h-9l1-10z" />
+          </svg>
+          AI-powered
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROBLEM SECTION ═══════ -->
+  <section class="problem section" id="problem">
+    <div class="container">
+      <span class="section-label reveal" data-i18n="problem.label">The Problem</span>
+      <h2 class="section-title reveal">
+        <span data-i18n="problem.title.1">Your Team Spends 60% of Their Day</span><br><span class="gradient-text"
+          data-i18n="problem.title.2">On Repetitive Document Work</span>
+      </h2>
+      <p class="section-subtitle reveal" data-i18n="problem.subtitle">
+        Mid-market freight forwarders in LatAm face a universal problem: highly skilled operators buried in manual
+        processes from the last century. Enterprise solutions target the US and Europe — your market is completely
+        underserved.
+      </p>
+
+      <div class="problem-grid">
+        <div class="problem-card reveal reveal-delay-1">
+          <div class="problem-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </div>
+          <h3 data-i18n="problem.card1.title">Quotations Built by Hand</h3>
+          <p data-i18n="problem.card1.text">Your team reads 10+ carrier emails, extracts rates from broken tables and
+            PDFs, and manually builds
+            comparison spreadsheets — every single time.</p>
+        </div>
+
+        <div class="problem-card reveal reveal-delay-2">
+          <div class="problem-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </div>
+          <h3 data-i18n="problem.card2.title">Lost Knowledge in Folders</h3>
+          <p data-i18n="problem.card2.text">Contracts, SOPs, rate sheets — scattered across email, drives, and desktops.
+            The answer exists somewhere,
+            but finding it takes longer than guessing.</p>
+        </div>
+
+        <div class="problem-card reveal reveal-delay-3">
+          <div class="problem-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <h3 data-i18n="problem.card3.title">Email Overload</h3>
+          <p data-i18n="problem.card3.text">Urgent quote requests buried under confirmations, follow-ups, and spam.
+            Operators miss critical emails
+            because there's no intelligent prioritization.</p>
+        </div>
+
+        <div class="problem-card reveal reveal-delay-4">
+          <div class="problem-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          </div>
+          <h3 data-i18n="problem.card4.title">Compliance Nightmares</h3>
+          <p data-i18n="problem.card4.text">HS codes searched manually, DIAN regulations checked by memory, and customs
+            documents prepared hoping
+            nothing was missed. One error = costly delays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ MODULES — The 4 Automations ═══════ -->
+  <section class="modules section" id="modules">
+    <div class="container">
+      <span class="section-label reveal" data-i18n="modules.label">Platform Modules</span>
+      <h2 class="section-title reveal">
+        <span data-i18n="modules.title.1">Four Modules. </span><span class="gradient-text"
+          data-i18n="modules.title.2">One Platform.</span>
+      </h2>
+      <p class="section-subtitle reveal" style="margin: 0 auto 3.5rem;" data-i18n="modules.subtitle">
+        Each module targets the most time-consuming workflows in freight forwarding operations. Deploy them individually
+        or as a complete suite.
+      </p>
+
+      <div class="modules-grid">
+        <!-- Module 1: Quote Generator -->
+        <div class="module-card reveal reveal-delay-1">
+          <div class="module-header">
+            <div class="module-icon module-icon--quotes">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <span class="module-tag" data-i18n="mod1.tag">Highest Impact</span>
+          </div>
+          <h3 data-i18n="mod1.title">Quote Generator</h3>
+          <p data-i18n="mod1.desc">Upload 5–10 carrier emails and get a structured, comparative quotation in seconds.
+            Parsed, validated, and
+            ready to send to your client.</p>
+          <ul class="module-features">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod1.f1">Multi-format ingestion (PDF, Excel, email)</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod1.f2">AI-ranked carrier recommendations</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod1.f3">Export to PDF or clipboard</span>
+            </li>
+          </ul>
+          <div class="module-flow">
+            <span data-i18n="mod1.flow.from">Carrier Emails</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+            <span data-i18n="mod1.flow.to">Structured Quote</span>
+          </div>
+        </div>
+
+        <!-- Module 2: Document Q&A -->
+        <div class="module-card reveal reveal-delay-2">
+          <div class="module-header">
+            <div class="module-icon module-icon--docs">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+            <span class="module-tag" data-i18n="mod2.tag">Time Saver</span>
+          </div>
+          <h3 data-i18n="mod2.title">Document Q&A</h3>
+          <p data-i18n="mod2.desc">Ask questions in natural language and get instant answers from your contracts, SOPs,
+            and rate sheets — with
+            source citations always included.</p>
+          <ul class="module-features">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod2.f1">Natural language search</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod2.f2">Source citations on every answer</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod2.f3">Contracts, SOPs, rate sheets, guides</span>
+            </li>
+          </ul>
+          <div class="module-flow">
+            <span data-i18n="mod2.flow.from">"Transit time to MIA?"</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+            <span data-i18n="mod2.flow.to">Answer + Source</span>
+          </div>
+        </div>
+
+        <!-- Module 3: Email Triage -->
+        <div class="module-card reveal reveal-delay-3">
+          <div class="module-header">
+            <div class="module-icon module-icon--email">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <span class="module-tag" data-i18n="mod3.tag">Automation</span>
+          </div>
+          <h3 data-i18n="mod3.title">Email Triage</h3>
+          <p data-i18n="mod3.desc">Incoming emails are automatically classified, prioritized, and routed to the right
+            person. Never miss an
+            urgent quote request again.</p>
+          <ul class="module-features">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod3.f1">Auto-classify by type & urgency</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod3.f2">Intelligent routing to team members</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod3.f3">Gmail & IMAP integration</span>
+            </li>
+          </ul>
+          <div class="module-flow">
+            <span data-i18n="mod3.flow.from">Inbox Chaos</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+            <span data-i18n="mod3.flow.to">Prioritized Queue</span>
+          </div>
+        </div>
+
+        <!-- Module 4: Compliance Assistant -->
+        <div class="module-card reveal reveal-delay-4">
+          <div class="module-header">
+            <div class="module-icon module-icon--compliance">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <span class="module-tag" data-i18n="mod4.tag">Compliance</span>
+          </div>
+          <h3 data-i18n="mod4.title">Compliance Assistant</h3>
+          <p data-i18n="mod4.desc">Describe a product in plain language and get the correct HS code, DIAN validation,
+            and customs
+            documentation requirements — instantly.</p>
+          <ul class="module-features">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod4.f1">HS code lookup from descriptions</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod4.f2">DIAN & VUCE regulation validation</span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="mod4.f3">Colombian customs compliance</span>
+            </li>
+          </ul>
+          <div class="module-flow">
+            <span data-i18n="mod4.flow.from">"LED displays 42in"</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+            <span data-i18n="mod4.flow.to">HS: 8528.72 ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ HOW IT WORKS ═══════ -->
+  <section class="pipeline section" id="how-it-works">
+    <div class="container">
+      <span class="section-label reveal" data-i18n="pipeline.label">How It Works</span>
+      <h2 class="section-title reveal">
+        <span data-i18n="pipeline.title.1">Six Layers. </span><span class="gradient-text"
+          data-i18n="pipeline.title.2">One Intelligent System.</span>
+      </h2>
+      <p class="section-subtitle reveal" style="margin: 0 auto 3.5rem;" data-i18n="pipeline.subtitle">
+        OperisChain's architecture is purpose-built for document-heavy logistics workflows — from ingestion to AI
+        reasoning to action.
+      </p>
+
+      <div class="pipeline-stages pipeline-stages--6">
+        <div class="stage-card reveal reveal-delay-1">
+          <div class="stage-number">1</div>
+          <h3 data-i18n="pipe1.title">Document Ingestion</h3>
+          <p data-i18n="pipe1.text">PDFs, Excel, emails, Word docs — all formats accepted. Connected to Gmail/IMAP for
+            automatic ingestion.</p>
+          <span class="stage-tag" data-i18n="pipe1.tag">Multi-format</span>
+        </div>
+
+        <div class="stage-card reveal reveal-delay-2">
+          <div class="stage-number">2</div>
+          <h3 data-i18n="pipe2.title">Processing & Embedding</h3>
+          <p data-i18n="pipe2.text">Documents are chunked, embedded, and enriched with metadata — type, client, carrier,
+            route, date.</p>
+          <span class="stage-tag" data-i18n="pipe2.tag">AI embeddings</span>
+        </div>
+
+        <div class="stage-card reveal reveal-delay-3">
+          <div class="stage-number">3</div>
+          <h3 data-i18n="pipe3.title">Intelligent Storage</h3>
+          <p data-i18n="pipe3.text">Vector DB for semantic search, PostgreSQL for structured data, Redis for caching.
+            Each with a clear
+            responsibility.</p>
+          <span class="stage-tag" data-i18n="pipe3.tag">Hybrid storage</span>
+        </div>
+
+        <div class="stage-card reveal reveal-delay-1">
+          <div class="stage-number">4</div>
+          <h3 data-i18n="pipe4.title">LLM Orchestration</h3>
+          <p data-i18n="pipe4.text">GPT-4o for generation, Claude for complex analysis. Every output validated with
+            schemas. Every call traced.
+          </p>
+          <span class="stage-tag" data-i18n="pipe4.tag">Multi-model</span>
+        </div>
+
+        <div class="stage-card reveal reveal-delay-2">
+          <div class="stage-number">5</div>
+          <h3 data-i18n="pipe5.title">Workflow Automation</h3>
+          <p data-i18n="pipe5.text">The 4 modules execute on the orchestration layer — quoting, search, triage,
+            compliance. All automated.</p>
+          <span class="stage-tag" data-i18n="pipe5.tag">4 modules</span>
+        </div>
+
+        <div class="stage-card reveal reveal-delay-3">
+          <div class="stage-number">6</div>
+          <h3 data-i18n="pipe6.title">Interfaces</h3>
+          <p data-i18n="pipe6.text">Dashboard, chat, API, webhooks. Your team interacts through a modern UI. Your
+            systems integrate via REST.
+          </p>
+          <span class="stage-tag" data-i18n="pipe6.tag">Multi-channel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FEATURES ═══════ -->
+  <section class="features section" id="features">
+    <div class="container">
+      <span class="section-label reveal" data-i18n="features.label">Capabilities</span>
+      <h2 class="section-title reveal">
+        <span data-i18n="features.title.1">Built for </span><span class="gradient-text"
+          data-i18n="features.title.2">Operational Trust</span>
+      </h2>
+      <p class="section-subtitle reveal" style="margin: 0 auto 3rem;" data-i18n="features.subtitle">
+        Every capability exists to make your operators trust the system enough to act on its output without
+        double-checking.
+      </p>
+
+      <div class="features-grid">
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+          </div>
+          <h3 data-i18n="feat1.title">Source Citations Always</h3>
+          <p data-i18n="feat1.text">Every answer, every rate, every recommendation links back to the original document.
+            Full auditability on
+            every output.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3 data-i18n="feat2.title">Data Isolation</h3>
+          <p data-i18n="feat2.text">Every record is scoped by client. Your rates, documents, and quotes are completely
+            invisible to other
+            clients. Row-level security enforced.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+          </div>
+          <h3 data-i18n="feat3.title">LatAm-Native</h3>
+          <p data-i18n="feat3.text">Built for the Colombian and Latin American freight market. DIAN integration, VUCE
+            compliance,
+            Spanish-fluent AI, local carrier knowledge.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 10 10-12h-9l1-10z" />
+            </svg>
+          </div>
+          <h3 data-i18n="feat4.title">Validated AI Outputs</h3>
+          <p data-i18n="feat4.text">Every LLM output is validated against strict schemas before reaching your team. Bad
+            data is caught and
+            flagged — never silently passed.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="9" y1="21" x2="9" y2="9" />
+            </svg>
+          </div>
+          <h3 data-i18n="feat5.title">Real-Time Dashboard</h3>
+          <p data-i18n="feat5.text">Usage metrics, cost tracking, time savings — all visible in real-time. See your ROI
+            calculation update with
+            every automated workflow.</p>
+        </div>
+
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <h3 data-i18n="feat6.title">API & Webhook Ready</h3>
+          <p data-i18n="feat6.text">REST endpoints for TMS integration, webhook notifications to Slack and WhatsApp
+            Business. OperisChain fits
+            into your existing stack.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ WHY US — Competitive Positioning ═══════ -->
+  <section class="trust section" id="why-us">
+    <div class="glow-orb"></div>
+    <div class="container">
+      <div class="trust-layout">
+        <div class="trust-content">
+          <span class="section-label reveal" data-i18n="why.label">Why OperisChain</span>
+          <h2 class="section-title reveal">
+            <span data-i18n="why.title.1">The Enterprise Tools</span><br><span class="gradient-text"
+              data-i18n="why.title.2">Ignore Your Market</span>
+          </h2>
+          <p class="section-subtitle reveal" data-i18n="why.subtitle">
+            Enterprise logistics platforms target US and European carriers with 6-month onboarding and annual contracts.
+            OperisChain is purpose-built for LatAm mid-market freight forwarders.
+          </p>
+
+          <div class="trust-list">
+            <div class="trust-item reveal reveal-delay-1">
+              <div class="trust-item-icon">✓</div>
+              <div>
+                <h4 data-i18n="why.item1.title">Deployed in Weeks, Not Months</h4>
+                <p data-i18n="why.item1.text">Full implementation takes 3 weeks with your real data. Not 6 months of
+                  enterprise onboarding.</p>
+              </div>
+            </div>
+
+            <div class="trust-item reveal reveal-delay-2">
+              <div class="trust-item-icon">✓</div>
+              <div>
+                <h4 data-i18n="why.item2.title">Your Data, Not Generic Models</h4>
+                <p data-i18n="why.item2.text">The system trains on your actual carrier emails, contracts, and SOPs. It
+                  knows your business, not a
+                  generic freight model.</p>
+              </div>
+            </div>
+
+            <div class="trust-item reveal reveal-delay-3">
+              <div class="trust-item-icon">✓</div>
+              <div>
+                <h4 data-i18n="why.item3.title">Mid-Market SaaS Pricing</h4>
+                <p data-i18n="why.item3.text">From $120/mo with a free trial. No enterprise sales cycles, no annual lock-in. Prove ROI in 14 days before you pay.</p>
+              </div>
+            </div>
+
+            <div class="trust-item reveal reveal-delay-4">
+              <div class="trust-item-icon">✓</div>
+              <div>
+                <h4 data-i18n="why.item4.title">No Market Competition</h4>
+                <p data-i18n="why.item4.text">No AI operations tool targets 5–50 employee freight forwarders in LatAm.
+                  This market is completely
+                  underserved — until now.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-visual reveal">
+          <div class="trust-code-block">
+            <div class="code-header">
+              <span class="code-dot code-dot--red"></span>
+              <span class="code-dot code-dot--yellow"></span>
+              <span class="code-dot code-dot--green"></span>
+              <span class="code-title">operischain vs. enterprise</span>
+            </div>
+            <div class="code-body">
+              <div class="code-line"><span class="code-line-num"> </span><span class="code-comment">// Enterprise
+                  Solutions</span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">target</span>:&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-string">"US/EU
+                    carriers"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">onboarding</span>: <span class="code-string">"6 months"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">contract</span>:&nbsp; <span class="code-string">"annual
+                    lock-in"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">cost</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+                    class="code-number">"$50k+/year"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">data</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-string">"generic
+                    models"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span>&nbsp;</div>
+              <div class="code-line"><span class="code-line-num"> </span><span class="code-comment">//
+                  OperisChain</span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">target</span>:&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-accent">"LatAm
+                    mid-market"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">onboarding</span>: <span class="code-accent">"instant"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">contract</span>:&nbsp; <span class="code-accent">"14-day free
+                    trial"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">cost</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-accent">"from
+                    $120/mo"</span></span></div>
+              <div class="code-line"><span class="code-line-num"> </span><span><span
+                    class="code-property">data</span>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="code-accent">"trained
+                    on YOUR data"</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PRICING ═══════ -->
+  <section class="pricing section" id="pricing">
+    <div class="container">
+      <span class="section-label reveal" data-i18n="pricing.label">Pricing</span>
+      <h2 class="section-title reveal">
+        <span data-i18n="pricing.title.1">Simple Pricing. </span><span class="gradient-text"
+          data-i18n="pricing.title.2">Serious Results.</span>
+      </h2>
+      <p class="section-subtitle reveal" style="margin: 0 auto 3rem;" data-i18n="pricing.subtitle">
+        Start with a 14-day free trial. No credit card required. Scale as your operations grow.
+      </p>
+
+      <div class="pricing-grid pricing-grid--3">
+        <!-- Starter -->
+        <div class="pricing-card reveal reveal-delay-1">
+          <span class="pricing-label" data-i18n="price1.label">Getting Started</span>
+          <h3 class="pricing-name" data-i18n="price1.name">Starter</h3>
+          <p class="pricing-desc" data-i18n="price1.desc">Perfect for solo operators and small forwarders. Upload carrier rate sheets and get structured quotes in seconds.</p>
+          <div class="pricing-amount">
+            <span class="pricing-currency">$</span>
+            <span class="pricing-value">120</span>
+            <span class="pricing-period" data-i18n="pricing.period">/month</span>
+          </div>
+          <div class="pricing-features">
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price1.f1">Manual file upload (PDF, Excel, email)</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price1.f2">AI-powered quote extraction</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price1.f3">Up to 50 extractions/month</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price1.f4">PDF export & quote history</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price1.f5">1 user seat</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price1.f6">Email support</span>
+            </div>
+          </div>
+          <button class="pricing-btn pricing-btn--secondary" onclick="openDemoModal('Starter')" data-i18n="price1.btn">Book a Demo</button>
+        </div>
+
+        <!-- Professional — FEATURED -->
+        <div class="pricing-card pricing-card--featured reveal reveal-delay-2">
+          <div class="pricing-popular-badge" data-i18n="pricing.popular">Most Popular</div>
+          <span class="pricing-label" data-i18n="price2.label">Best Value</span>
+          <h3 class="pricing-name" data-i18n="price2.name">Professional</h3>
+          <p class="pricing-desc" data-i18n="price2.desc">For growing teams. Automate email ingestion, get price intelligence, and scale your quoting operations.</p>
+          <div class="pricing-amount">
+            <span class="pricing-currency">$</span>
+            <span class="pricing-value">349</span>
+            <span class="pricing-period" data-i18n="pricing.period">/month</span>
+          </div>
+          <div class="pricing-includes" data-i18n="pricing.includes">Everything in Starter, plus:</div>
+          <div class="pricing-features">
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price2.f1">Email forwarding auto-ingestion</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price2.f2">WhatsApp Business integration</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price2.f3">Price intelligence & rate alerts</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price2.f4">Up to 500 extractions/month</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price2.f5">5 user seats</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price2.f6">Priority support</span>
+            </div>
+          </div>
+          <button class="pricing-btn pricing-btn--primary" onclick="openDemoModal('Professional')" data-i18n="price2.btn">Book a Demo →</button>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card reveal reveal-delay-3">
+          <span class="pricing-label" data-i18n="price3.label">Full Power</span>
+          <h3 class="pricing-name" data-i18n="price3.name">Enterprise</h3>
+          <p class="pricing-desc" data-i18n="price3.desc">Unlimited power for established forwarders. API access, custom models, ERP integration, and dedicated support.</p>
+          <div class="pricing-amount">
+            <span class="pricing-currency">$</span>
+            <span class="pricing-value">899</span>
+            <span class="pricing-period" data-i18n="pricing.period">/month</span>
+          </div>
+          <div class="pricing-includes" data-i18n="pricing.includes.enterprise">Everything in Professional, plus:</div>
+          <div class="pricing-features">
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price3.f1">Unlimited extractions</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price3.f2">Unlimited user seats</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price3.f3">REST API & webhook access</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price3.f4">Custom AI model training</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price3.f5">ERP/TMS integration</span>
+            </div>
+            <div class="pricing-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span data-i18n="price3.f6">Dedicated account manager</span>
+            </div>
+          </div>
+          <button class="pricing-btn pricing-btn--secondary" onclick="openDemoModal('Enterprise')" data-i18n="price3.btn">Book a Demo</button>
+        </div>
+      </div>
+
+      <!-- Marketplace Add-on -->
+      <div class="pricing-addon reveal">
+        <div class="pricing-addon-inner">
+          <div class="pricing-addon-content">
+            <div class="pricing-addon-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+              <span data-i18n="price4.tag">Add-on</span>
+            </div>
+            <div>
+              <h3 class="pricing-addon-name" data-i18n="price4.name">Marketplace Intelligence</h3>
+              <p class="pricing-addon-desc" data-i18n="price4.desc">Anonymized rate benchmarking across the OperisChain network. Know where your rates stand in the market.</p>
+            </div>
+          </div>
+          <div class="pricing-addon-right">
+            <div class="pricing-addon-price">
+              <span class="pricing-addon-plus">+</span>
+              <span class="pricing-currency">$</span>
+              <span class="pricing-addon-value">199</span>
+              <span class="pricing-period" data-i18n="pricing.period">/month</span>
+            </div>
+            <div class="pricing-addon-features">
+              <span class="pricing-addon-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="price4.f1">Rate benchmarking</span>
+              </span>
+              <span class="pricing-addon-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="price4.f2">Market percentiles</span>
+              </span>
+              <span class="pricing-addon-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="price4.f3">Lane pricing trends</span>
+              </span>
+              <span class="pricing-addon-feature">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span data-i18n="price4.f4">Competitive intelligence</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FAQ ═══════ -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <span class="section-label reveal" data-i18n="faq.label">FAQ</span>
+      <h2 class="section-title reveal">
+        <span data-i18n="faq.title.1">Common </span><span class="gradient-text" data-i18n="faq.title.2">Questions</span>
+      </h2>
+      <p class="section-subtitle reveal" style="margin: 0 auto 3rem;" data-i18n="faq.subtitle">
+        Everything you need to know about OperisChain.
+      </p>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" id="faq-q1">
+            <span data-i18n="faq1.q">Do I need all 4 modules or can I start with just one?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq1.a">
+              You can deploy modules individually. Most clients start with the Quote Generator — it has the highest
+              immediate impact and demonstrates ROI fastest. During the audit, we identify which modules will save your
+              team the most time and recommend a deployment order.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" id="faq-q2">
+            <span data-i18n="faq2.q">How is this different from just using ChatGPT?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq2.a">
+              ChatGPT is a general tool — it doesn't know your carriers, your contracts, or your compliance
+              requirements. OperisChain is trained on your actual data, validates every output against strict schemas,
+              cites sources, and integrates directly into your workflow. It's a purpose-built system, not a general
+              chatbot.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" id="faq-q3">
+            <span data-i18n="faq3.q">What document formats does it support?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq3.a">
+              PDFs, Excel/CSV, Word documents, plain text, emails (via Gmail API or IMAP), and even scanned documents
+              via OCR. During implementation, we configure extraction pipelines specifically for your carriers' formats
+              for maximum accuracy.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" id="faq-q4">
+            <span data-i18n="faq4.q">How long does the full implementation take?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq4.a">
+              The audit takes about a week. Full implementation with all modules takes approximately 3 weeks after that
+              — ingestion pipelines, AI configuration, dashboard setup, integrations, and team training. Compare that to
+              6+ months with enterprise solutions.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" id="faq-q5">
+            <span data-i18n="faq5.q">Is my data secure?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq5.a">
+              Yes. Every record is scoped by client ID with row-level security enforced at the database level. Your data
+              is stored in isolated indexes. We use Supabase (PostgreSQL), Pinecone (vector DB), and Cloudflare R2 (file
+              storage) — all with encryption at rest and in transit.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question" id="faq-q6">
+            <span data-i18n="faq6.q">Can it integrate with our existing TMS or systems?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner" data-i18n="faq6.a">
+              Yes. OperisChain provides REST API endpoints for integration with external TMS systems, plus webhook
+              notifications to Slack and WhatsApp Business. During implementation, we configure the integrations
+              specific to your tech stack.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA ═══════ -->
+  <section class="cta-section section" id="cta">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2 class="cta-title"><span data-i18n="cta.title.1">Ready to Automate Your</span><br><span class="gradient-text"
+            data-i18n="cta.title.2">Freight Operations?</span></h2>
+        <p class="cta-text" data-i18n="cta.text">
+          See OperisChain in action with your real freight data. Book a personalized demo and discover how AI can transform your quoting operations.
+        </p>
+        <div class="cta-actions">
+          <button class="btn-primary" onclick="openDemoModal()" data-i18n="cta.primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Book a Demo →
+          </button>
+          <a href="#modules" class="btn-secondary" data-i18n="cta.secondary">
+            Explore Modules
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <img src="logo-icon.png" alt="" class="nav-logo-icon">
+            <span class="nav-logo-text">Operis<span>Chain</span></span>
+          </a>
+          <p data-i18n="footer.desc">AI-powered operational automation for freight forwarders in Latin America. Reduce
+            overhead, eliminate
+            errors, scale with confidence.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.platform">Platform</h4>
+          <a href="#modules" data-i18n="footer.modules">Modules</a>
+          <a href="#how-it-works" data-i18n="footer.architecture">Architecture</a>
+          <a href="#features" data-i18n="footer.capabilities">Capabilities</a>
+          <a href="#pricing" data-i18n="footer.pricing">Pricing</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.company">Company</h4>
+          <a href="#" data-i18n="footer.about">About</a>
+          <a href="#" data-i18n="footer.blog">Blog</a>
+          <a href="#" data-i18n="footer.careers">Careers</a>
+          <a href="mailto:hello@operischain.com" data-i18n="footer.contact">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.legal">Legal</h4>
+          <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" data-i18n="footer.terms">Terms of Service</a>
+          <a href="#" data-i18n="footer.data">Data Processing</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span data-i18n="footer.copy">© 2026 OperisChain. All rights reserved.</span>
+        <div class="footer-socials">
+          <a href="#" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════ DEMO MODAL ═══════ -->
+  <div class="demo-modal-overlay" id="demo-modal" aria-hidden="true">
+    <div class="demo-modal">
+      <button class="demo-modal-close" onclick="closeDemoModal()" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <!-- Form State -->
+      <div id="demo-form-container">
+        <div class="demo-modal-header">
+          <div class="demo-modal-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 data-i18n="demo.title">Book a Demo</h3>
+          <p data-i18n="demo.subtitle">See OperisChain in action with a personalized walkthrough using your real freight data.</p>
+        </div>
+
+        <form id="demo-form" onsubmit="handleDemoSubmit(event)" novalidate>
+          <input type="hidden" id="demo-plan" name="plan" value="">
+
+          <div class="demo-form-row">
+            <div class="demo-form-field">
+              <label for="demo-name" data-i18n="demo.name">Full Name</label>
+              <input type="text" id="demo-name" name="name" required minlength="2" placeholder="Juan Pérez">
+              <span class="demo-field-error" data-i18n="demo.error.name"></span>
+            </div>
+            <div class="demo-form-field">
+              <label for="demo-email" data-i18n="demo.email">Work Email</label>
+              <input type="email" id="demo-email" name="email" required placeholder="juan@company.com">
+              <span class="demo-field-error" data-i18n="demo.error.email"></span>
+            </div>
+          </div>
+
+          <div class="demo-form-row">
+            <div class="demo-form-field">
+              <label for="demo-company" data-i18n="demo.company">Company</label>
+              <input type="text" id="demo-company" name="company" required minlength="2" placeholder="Cargo Express S.A.S">
+              <span class="demo-field-error" data-i18n="demo.error.company"></span>
+            </div>
+            <div class="demo-form-field">
+              <label for="demo-size" data-i18n="demo.size">Team Size</label>
+              <select id="demo-size" name="size" required>
+                <option value="" disabled selected data-i18n="demo.size.placeholder">Select...</option>
+                <option value="1-5" data-i18n="demo.size.1">1–5 employees</option>
+                <option value="5-20" data-i18n="demo.size.2">5–20 employees</option>
+                <option value="20-50" data-i18n="demo.size.3">20–50 employees</option>
+                <option value="50+" data-i18n="demo.size.4">50+ employees</option>
+              </select>
+              <span class="demo-field-error" data-i18n="demo.error.size"></span>
+            </div>
+          </div>
+
+          <div class="demo-form-field">
+            <label for="demo-phone" data-i18n="demo.phone">Phone</label>
+            <input type="tel" id="demo-phone" name="phone" required placeholder="+57 300 123 4567">
+            <span class="demo-field-error" data-i18n="demo.error.phone"></span>
+          </div>
+
+          <div class="demo-form-field">
+            <label for="demo-message" data-i18n="demo.message">What are you looking to automate?</label>
+            <textarea id="demo-message" name="message" rows="3" required minlength="10" placeholder="e.g. Quote generation from carrier emails, rate comparison..."></textarea>
+            <span class="demo-field-error" data-i18n="demo.error.message"></span>
+          </div>
+
+          <button type="submit" class="demo-submit-btn" disabled data-i18n="demo.submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Book My Demo
+          </button>
+        </form>
+      </div>
+
+      <!-- Success State -->
+      <div id="demo-success" class="demo-success" style="display:none;">
+        <div class="demo-success-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+        </div>
+        <h3 data-i18n="demo.success.title">Demo Booked!</h3>
+        <p data-i18n="demo.success.text">Thanks! We'll reach out within 24 hours to schedule your personalized demo. Check your inbox.</p>
+        <button class="demo-submit-btn" onclick="closeDemoModal()" data-i18n="demo.success.close">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="i18n.js?v=3"></script>
+  <script src="script.js?v=3"></script>
+</body>
+
+</html>

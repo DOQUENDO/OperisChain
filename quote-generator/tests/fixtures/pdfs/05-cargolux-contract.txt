@@ -1,0 +1,51 @@
+CARGOLUX AIRLINES INTERNATIONAL
+CONTRACT RATE AGREEMENT
+
+Contract No: CX-2026-0342
+Customer: OperisChain Logistics SAS
+Valid From: 01-JAN-2026
+Valid To: 30-JUN-2026
+
+Dear Customer,
+
+Please find below the agreed contract rates for the period indicated above.
+
+ORIGIN: BOG (El Dorado International Airport, Bogotá)
+DESTINATION: AMS (Amsterdam Schiphol Airport)
+
+Kg Bracket       USD/kg    Transit
+0 - 100          4.80      4-5 days
+100 - 300        4.10      4-5 days
+300 - 500        3.65      4-5 days
+500 - 1000       3.20      5 days
+1000 - 2000      2.85      5 days
+2000+            2.50      5-6 days
+
+ORIGIN: BOG
+DESTINATION: FRA (Frankfurt am Main Airport)
+
+Kg Bracket       USD/kg    Transit
+0 - 100          4.90      4-5 days
+100 - 300        4.20      4-5 days
+300 - 500        3.75      4-5 days
+500 - 1000       3.30      5 days
+1000 - 2000      2.95      5 days
+2000+            2.60      5-6 days
+
+SURCHARGES (applicable to all routes):
+  FSC: INCLUDED
+  BAF: INCLUDED
+  PSS: NOT APPLICABLE (off-peak)
+  Handling: EUR 0.18/kg — EXCLUDED
+  AMS Terminal Handling: EUR 0.22/kg — EXCLUDED
+  FRA Terminal Handling: EUR 0.25/kg — EXCLUDED
+
+All rates are in USD per kilogram.
+Rates are for general cargo only.
+Perishables, live animals, and valuables subject to separate quotation.
+
+For any questions, please contact:
+  Jean-Claude Weber
+  Senior Account Manager
+  jc.weber@cargolux.com
+  +352 4211 3500
