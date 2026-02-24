@@ -33,7 +33,9 @@ const ALLOWED_ORIGINS = [
 
 function getCorsHeaders(request?: NextRequest) {
   const origin = request?.headers.get("origin") || "";
-  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  const allowed = ALLOWED_ORIGINS.includes(origin)
+    ? origin
+    : ALLOWED_ORIGINS[0];
   return {
     "Access-Control-Allow-Origin": allowed,
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
@@ -43,7 +45,10 @@ function getCorsHeaders(request?: NextRequest) {
 
 // Handle preflight
 export async function OPTIONS(request: NextRequest) {
-  return new NextResponse(null, { status: 204, headers: getCorsHeaders(request) });
+  return new NextResponse(null, {
+    status: 204,
+    headers: getCorsHeaders(request),
+  });
 }
 
 export async function POST(request: NextRequest) {
