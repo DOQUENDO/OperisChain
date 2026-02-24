@@ -5,7 +5,8 @@
  * Handles carrier rate PDFs, invoices, BLs, air waybills, certificates.
  */
 
-import pdf from "pdf-parse";
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const pdf = require("pdf-parse");
 
 export interface ParsedPDF {
   text: string;
