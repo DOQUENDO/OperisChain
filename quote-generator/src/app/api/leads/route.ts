@@ -13,7 +13,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { leads } from "@/lib/db/schema";
+import { leads, type Lead } from "@/lib/db/schema";
 import { Resend } from "resend";
 import { desc, eq, count } from "drizzle-orm";
 
@@ -213,7 +213,8 @@ export async function GET(request: NextRequest) {
       .limit(limit);
 
     if (status) {
-      query = query.where(eq(leads.status, status as any)) as any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      query = query.where(eq(leads.status, status as any)) as typeof query;
     }
 
     const results = await query;
@@ -239,7 +240,7 @@ export async function GET(request: NextRequest) {
 // Email Templates
 // ═══════════════════════════════════════
 
-function buildNotificationEmail(lead: any): string {
+function buildNotificationEmail(lead: Lead): string {
   return `
   <div style="font-family: 'Inter', -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a12; color: #e2e8f0; border-radius: 12px; overflow: hidden; border: 1px solid #1e1e2e;">
     <div style="background: linear-gradient(135deg, #00d4ff, #7b2ff7); padding: 24px 32px;">
@@ -266,7 +267,7 @@ function buildNotificationEmail(lead: any): string {
   </div>`;
 }
 
-function buildAutoReplyEmail(lead: any, isSpanish: boolean): string {
+function buildAutoReplyEmail(lead: Lead, isSpanish: boolean): string {
   if (isSpanish) {
     return `
     <div style="font-family: 'Inter', -apple-system, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; color: #1a1a2e; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0;">

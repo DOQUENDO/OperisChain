@@ -30,6 +30,7 @@ export interface SheetData {
  * @param fileName - Original file name (for type detection)
  */
 export function parseExcel(buffer: Buffer, _fileName?: string): ParsedExcel {
+  void _fileName; // reserved for future format detection
   const workbook = XLSX.read(buffer, { type: "buffer" });
   const sheets: SheetData[] = [];
   let totalRows = 0;

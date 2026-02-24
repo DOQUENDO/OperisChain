@@ -121,8 +121,8 @@ export async function POST(request: NextRequest) {
     );
 
     // ─── Stage 3: LLM Reasoning ───
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const reasoning = await generateQuoteReasoning({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       rates: scoredRates as any,
       cargo: {
         origin: originCode,
@@ -165,9 +165,9 @@ export async function POST(request: NextRequest) {
 
     // ─── Store quote in DB ───
     // Strip computed fields before inserting
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const dbLines = quoteLines.map(
-      ({ _totalPriceUSD, _unitType, ...rest }) => rest,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      ({ _totalPriceUSD: _, _unitType: __, ...rest }) => rest,
     );
     const quoteResult = await createQuote(
       {

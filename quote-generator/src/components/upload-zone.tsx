@@ -119,7 +119,8 @@ export function UploadZone({ clientId, mode, onDocumentUploaded, disabled }: Upl
         for (const file of droppedFiles) {
             await processFile(file);
         }
-    }, [clientId, disabled]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [disabled]);
 
     const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files || disabled) return;
