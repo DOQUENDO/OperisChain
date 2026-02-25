@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#7b2ff7"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="#0a0a12"/>
+  <!-- Chain link / O shape -->
+  <circle cx="256" cy="256" r="140" stroke="url(#g)" stroke-width="48" fill="none"/>
+  <!-- Connecting nodes representing automation/AI -->
+  <circle cx="256" cy="116" r="24" fill="#00d4ff"/>
+  <circle cx="377" cy="326" r="24" fill="#9b59f7"/>
+  <circle cx="135" cy="326" r="24" fill="#00d4ff"/>
+  <!-- Inner pulse / AI core -->
+  <circle cx="256" cy="256" r="36" fill="url(#g)" opacity="0.9"/>
+</svg>

@@ -80,9 +80,9 @@ interface PdfLabels {
 
 const labels: Record<Locale, PdfLabels> = {
   es: {
-    title: "Cotización Comparativa",
+    title: "Cotizacion Comparativa",
     subtitle: "Generada por OperisChain AI",
-    quoteId: "Cotización #",
+    quoteId: "Cotizacion #",
     date: "Fecha",
     route: "Ruta",
     weight: "Peso",
@@ -90,29 +90,29 @@ const labels: Record<Locale, PdfLabels> = {
     urgencyHigh: "Urgente",
     urgencyNormal: "Normal",
     urgencyUnknown: "No especificada",
-    carrierComparison: "Comparación de Carriers",
+    carrierComparison: "Comparacion de Carriers",
     carrier: "Carrier",
     routeCol: "Ruta",
     price: "Precio (USD)",
     unitPrice: "Precio Unit.",
-    transit: "Tránsito",
-    validUntil: "Válido Hasta",
+    transit: "Transito",
+    validUntil: "Valido Hasta",
     confidence: "Confianza",
     score: "Puntaje",
-    recommended: "★ Recomendado",
-    recommendationTitle: "Recomendación IA",
-    aiAnalysis: "Análisis de IA",
-    surchargeWarning: "⚠ Nota de Surcharges",
+    recommended: "* Recomendado",
+    recommendationTitle: "Recomendacion IA",
+    aiAnalysis: "Analisis de IA",
+    surchargeWarning: "! Nota de Surcharges",
     surchargeNote:
       "Algunos precios pueden no incluir surcharges adicionales. Verificar costo total con el carrier antes de confirmar.",
     footer: "Powered by OperisChain · operischain.com",
     footerDisclaimer:
-      "Esta cotización es informativa y no constituye una oferta comercial vinculante. Precios sujetos a confirmación del carrier.",
-    page: "Página",
+      "Esta cotizacion es informativa y no constituye una oferta comercial vinculante. Precios sujetos a confirmacion del carrier.",
+    page: "Pagina",
     of: "de",
     preparedFor: "Preparado para",
     na: "N/A",
-    days: "días",
+    days: "dias",
     confidenceHigh: "Alta",
     confidenceMedium: "Media",
     confidenceLow: "Baja",
@@ -138,10 +138,10 @@ const labels: Record<Locale, PdfLabels> = {
     validUntil: "Valid Until",
     confidence: "Confidence",
     score: "Score",
-    recommended: "★ Recommended",
+    recommended: "* Recommended",
     recommendationTitle: "AI Recommendation",
     aiAnalysis: "AI Analysis",
-    surchargeWarning: "⚠ Surcharge Notice",
+    surchargeWarning: "! Surcharge Notice",
     surchargeNote:
       "Some prices may not include additional surcharges. Verify total cost with the carrier before confirming.",
     footer: "Powered by OperisChain · operischain.com",
@@ -233,6 +233,32 @@ function getUnitLabel(unitType?: string): string {
     default:
       return "";
   }
+}
+
+/**
+ * Sanitize text for jsPDF's built-in Helvetica font (Windows-1252 only).
+ * Replaces Unicode symbols with ASCII-safe equivalents to prevent
+ * garbled output (e.g. arrows showing as "l'", stars as "&").
+ */
+function sanitizeText(text: string): string {
+  return text
+    .replace(/\u2192|\u2794|\u279C|\u27A1/g, " -> ")   // → arrows
+    .replace(/\u2190/g, "<- ")                           // ←
+    .replace(/\u2605|\u2B50/g, "* ")                     // ★ ⭐
+    .replace(/\u26A0\uFE0F?/g, "! ")                     // ⚠️
+    .replace(/\u2014/g, " - ")                            // — em dash
+    .replace(/\u2013/g, "-")                              // – en dash
+    .replace(/\u2018|\u2019/g, "'")                       // '' smart quotes
+    .replace(/\u201C|\u201D/g, '"')                       // "" smart quotes
+    .replace(/\u2022/g, "- ")                             // • bullet
+    .replace(/\u00B7/g, ".")                              // · middle dot
+    .replace(/\u2026/g, "...")                            // … ellipsis
+    .replace(/\u00A0/g, " ")                              // non-breaking space
+    .replace(/\u2713|\u2714/g, "[OK] ")                   // ✓ ✔
+    .replace(/\u2717|\u2718/g, "[X] ")                    // ✗ ✘
+    .replace(/\u00BD/g, "1/2")                            // ½
+    .replace(/\u00BC/g, "1/4")                            // ¼
+    .replace(/\u00BE/g, "3/4");                           // ¾
 }
 
 // ═══════════════════════════════════════
@@ -365,7 +391,7 @@ function drawHeader(
     align: "right",
   });
   doc.text(
-    `${l.date}: ${new Date(quote.generatedAt).toLocaleDateString(locale === "es" ? "es-CO" : "en-US", { year: "numeric", month: "long", day: "numeric" })}`,
+    sanitizeText(`${l.date}: ${new Date(quote.generatedAt).toLocaleDateString(locale === "es" ? "es-CO" : "en-US", { year: "numeric", month: "long", day: "numeric" })}`),
     rightX,
     20,
     { align: "right" },
@@ -407,7 +433,7 @@ function drawMetadata(
   const metaItems = [
     {
       label: l.route,
-      value: `${quote.cargo.origin} → ${quote.cargo.destination}`,
+      value: sanitizeText(`${quote.cargo.origin} -> ${quote.cargo.destination}`),
     },
     { label: l.weight, value: `${quote.cargo.weightKg.toLocaleString()} kg` },
     { label: l.urgency, value: getUrgencyLabel(quote.cargo.urgency, l) },
@@ -491,13 +517,13 @@ function drawCarrierTable(
       unitType === "per_kg" || unitType === "per_ton" || unitType === "per_cbm";
 
     return [
-      isRecommended ? "★" : "",
-      line.carrier,
-      line.route,
+      isRecommended ? "*" : "",
+      sanitizeText(line.carrier),
+      sanitizeText(line.route),
       formatCurrency(totalPrice),
       isUnitRate && totalPrice !== line.priceUSD
         ? `${formatCurrency(line.priceUSD)}${getUnitLabel(unitType)}`
-        : "—",
+        : "-",
       line.transitDays != null ? `${line.transitDays} ${l.days}` : l.na,
       line.validUntil || l.na,
       getConfidenceLabel(line.confidenceScore, l),
@@ -602,7 +628,7 @@ function drawRecommendation(
   // Calculate text height for the reasoning
   doc.setFontSize(8);
   const reasoningLines = doc.splitTextToSize(
-    quote.reasoning,
+    sanitizeText(quote.reasoning),
     contentWidth - 16,
   );
   const cardHeight = Math.max(30, 22 + reasoningLines.length * 3.5);
@@ -625,7 +651,7 @@ function drawRecommendation(
     doc.setFontSize(12);
     doc.setTextColor(...COLORS.white);
     doc.text(
-      `${quote.recommended} — ${formatCurrency(recommendedLine.totalPriceUSD ?? recommendedLine.priceUSD)}`,
+      sanitizeText(`${quote.recommended} - ${formatCurrency(recommendedLine.totalPriceUSD ?? recommendedLine.priceUSD)}`),
       margin + 8,
       y + 14,
     );
