@@ -22,10 +22,11 @@ import {
     type ColumnDef,
     type SortingState,
 } from '@tanstack/react-table';
-import { ArrowUpDown, Download, AlertCircle, Star, Clock, DollarSign } from 'lucide-react';
+import { ArrowUpDown, Download, AlertCircle, Star, Clock, DollarSign, Loader2 } from 'lucide-react';
 import { ConfidenceBadge } from './confidence-badge';
 import { SurchargeBanner } from './surcharge-banner';
 import { useTranslation } from '@/lib/i18n';
+import { usePdfExport } from '@/hooks/use-pdf-export';
 import type { SurchargeFlag } from '@/lib/db/schema';
 
 export interface QuoteLineDisplay {
@@ -66,7 +67,8 @@ interface QuoteTableProps {
 }
 
 export function QuoteTable({ quote, onUrgencySelect }: QuoteTableProps) {
-    const { t } = useTranslation();
+    const { t, locale } = useTranslation();
+    const { exportPdf, isExporting } = usePdfExport();
     const [sorting, setSorting] = useState<SortingState>([
         { id: 'score', desc: true },
     ]);
@@ -249,8 +251,17 @@ export function QuoteTable({ quote, onUrgencySelect }: QuoteTableProps) {
                         })}
                     </p>
                 </div>
-                <button className="flex items-center gap-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-white text-sm font-medium rounded-lg transition-colors">
-                    <Download size={16} /> {t('quote.exportPDF')}
+                <button
+                    onClick={() => exportPdf(quote, locale)}
+                    disabled={isExporting}
+                    className="flex items-center gap-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 disabled:bg-cyan-500/50 disabled:cursor-wait text-white text-sm font-medium rounded-lg transition-colors"
+                >
+                    {isExporting ? (
+                        <Loader2 size={16} className="animate-spin" />
+                    ) : (
+                        <Download size={16} />
+                    )}
+                    {isExporting ? t('quote.exportingPDF') : t('quote.exportPDF')}
                 </button>
             </div>
 

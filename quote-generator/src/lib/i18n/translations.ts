@@ -223,6 +223,10 @@ export const translations = {
     es: "Exportar PDF",
     en: "Export PDF",
   },
+  "quote.exportingPDF": {
+    es: "Generando...",
+    en: "Generating...",
+  },
   "quote.recommendation": {
     es: "Recomendación: {carrier}",
     en: "Recommendation: {carrier}",
