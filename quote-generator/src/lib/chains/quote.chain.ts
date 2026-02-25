@@ -42,6 +42,7 @@ export function createQuoteChain() {
     modelName: "claude-sonnet-4-20250514",
     temperature: 0.3, // Some creativity for explanations
     maxTokens: 2048,
+    maxRetries: 3, // Auto-retry on 429/529 (overloaded) errors
     anthropicApiKey: process.env.ANTHROPIC_API_KEY,
   });
 

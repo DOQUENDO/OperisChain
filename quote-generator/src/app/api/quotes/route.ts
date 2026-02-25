@@ -25,6 +25,40 @@ import {
 import { getSurchargeWarnings } from "@/lib/surcharges";
 import type { SurchargeFlag, FreightMode } from "@/lib/db/schema";
 
+/**
+ * Retry an async function with exponential backoff.
+ * Specifically handles Anthropic 529 (overloaded) and 429 (rate limit) errors.
+ */
+async function retryWithBackoff<T>(
+  fn: () => Promise<T>,
+  opts: { retries?: number; baseDelayMs?: number; label?: string } = {},
+): Promise<T> {
+  const { retries = 2, baseDelayMs = 2000, label = "API" } = opts;
+  let lastError: unknown;
+
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await fn();
+    } catch (err: unknown) {
+      lastError = err;
+      const status = (err as { status?: number }).status;
+      const isRetryable = status === 529 || status === 429;
+
+      if (!isRetryable || attempt === retries) {
+        throw err;
+      }
+
+      const delay = baseDelayMs * Math.pow(2, attempt);
+      console.warn(
+        `[${label}] Attempt ${attempt + 1} failed (status ${status}), retrying in ${delay}ms...`,
+      );
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  }
+
+  throw lastError;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -120,19 +154,23 @@ export async function POST(request: NextRequest) {
       { urgency, mode: freightMode },
     );
 
-    // ─── Stage 3: LLM Reasoning ───
-    const reasoning = await generateQuoteReasoning({
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      rates: scoredRates as any,
-      cargo: {
-        origin: originCode,
-        destination: destCode,
-        weightKg,
-        urgency,
-        mode: freightMode,
-        description,
-      },
-    });
+    // ─── Stage 3: LLM Reasoning (with retry for transient API errors) ───
+    const reasoning = await retryWithBackoff(
+      () =>
+        generateQuoteReasoning({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          rates: scoredRates as any,
+          cargo: {
+            origin: originCode,
+            destination: destCode,
+            weightKg,
+            urgency,
+            mode: freightMode,
+            description,
+          },
+        }),
+      { retries: 2, baseDelayMs: 2000, label: "QuoteReasoning" },
+    );
 
     // ─── Build quote lines ───
     const quoteLines = scoredRates.map((rate) => {
@@ -219,6 +257,19 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error("Quote generation error:", error);
+
+    const status = (error as { status?: number }).status;
+    if (status === 529 || status === 429) {
+      return NextResponse.json(
+        {
+          error:
+            "AI service is temporarily overloaded. Please try again in a few seconds.",
+          retryable: true,
+        },
+        { status: 503 },
+      );
+    }
+
     return NextResponse.json(
       { error: "Failed to generate quote", details: String(error) },
       { status: 500 },
