@@ -16,6 +16,7 @@
 import { useState } from 'react';
 import { UploadZone, type UploadResult } from '@/components/upload-zone';
 import { QuoteTable, type QuoteDisplay } from '@/components/quote-table';
+import { EmailIngestion } from '@/components/email-ingestion';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { useTranslation } from '@/lib/i18n';
 import { FileText, Zap, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
@@ -214,6 +215,27 @@ export default function QuotesPage() {
                             clientId={DEMO_CLIENT_ID}
                             mode={mode}
                             onDocumentUploaded={handleDocumentUploaded}
+                        />
+
+                        {/* Email forwarding option */}
+                        <div className="relative flex items-center gap-4 py-2">
+                            <div className="flex-1 border-t border-white/10" />
+                            <span className="text-xs text-white/30 uppercase tracking-wider">or</span>
+                            <div className="flex-1 border-t border-white/10" />
+                        </div>
+
+                        <EmailIngestion
+                            clientId={DEMO_CLIENT_ID}
+                            onRatesReady={() => {
+                                // When email ingestion completes, mark as having docs
+                                handleDocumentUploaded({
+                                    documentId: 'email-ingested',
+                                    fileName: 'Email ingestion',
+                                    fileType: 'email',
+                                    textLength: 0,
+                                    textPreview: '',
+                                });
+                            }}
                         />
 
                         {uploadedDocs.length > 0 && (

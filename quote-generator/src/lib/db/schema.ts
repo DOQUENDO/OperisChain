@@ -78,6 +78,17 @@ export const docTypeEnum = pgEnum("doc_type", [
   "csv",
   "other",
 ]);
+export const jobStatusEnum = pgEnum("job_status", [
+  "pending",
+  "processing",
+  "done",
+  "failed",
+]);
+export const ingestionSourceEnum = pgEnum("ingestion_source", [
+  "email",
+  "upload",
+  "whatsapp",
+]);
 
 // ─── Clients ───
 export const clients = pgTable("clients", {
@@ -262,11 +273,31 @@ export const leads = pgTable("leads", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
+// ─── Ingestion Jobs ───
+// Tracks async document ingestion from email/upload/whatsapp.
+// Decouples receipt from processing to avoid Vercel timeout issues.
+export const ingestionJobs = pgTable("ingestion_jobs", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  clientId: uuid("client_id")
+    .references(() => clients.id)
+    .notNull(),
+  documentId: uuid("document_id").references(() => documents.id), // null until doc created
+  status: jobStatusEnum("status").notNull().default("pending"),
+  source: ingestionSourceEnum("source").notNull().default("email"),
+  ratesExtracted: integer("rates_extracted"), // count of rates found
+  errorMessage: text("error_message"),
+  emailSubject: text("email_subject"), // original email subject for reference
+  emailFrom: text("email_from"), // sender address
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
 // ─── Relations ───
 export const clientsRelations = relations(clients, ({ many }) => ({
   documents: many(documents),
   rates: many(rates),
   quotes: many(quotes),
+  ingestionJobs: many(ingestionJobs),
 }));
 
 export const documentsRelations = relations(documents, ({ one, many }) => ({
@@ -295,6 +326,17 @@ export const quoteLinesRelations = relations(quoteLines, ({ one }) => ({
   rate: one(rates, { fields: [quoteLines.rateId], references: [rates.id] }),
   sourceDoc: one(documents, {
     fields: [quoteLines.sourceDocId],
+    references: [documents.id],
+  }),
+}));
+
+export const ingestionJobsRelations = relations(ingestionJobs, ({ one }) => ({
+  client: one(clients, {
+    fields: [ingestionJobs.clientId],
+    references: [clients.id],
+  }),
+  document: one(documents, {
+    fields: [ingestionJobs.documentId],
     references: [documents.id],
   }),
 }));
@@ -355,3 +397,5 @@ export type QuoteLine = typeof quoteLines.$inferSelect;
 export type NewQuoteLine = typeof quoteLines.$inferInsert;
 export type Lead = typeof leads.$inferSelect;
 export type NewLead = typeof leads.$inferInsert;
+export type IngestionJob = typeof ingestionJobs.$inferSelect;
+export type NewIngestionJob = typeof ingestionJobs.$inferInsert;

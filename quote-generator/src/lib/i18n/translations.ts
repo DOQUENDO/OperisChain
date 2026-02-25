@@ -94,6 +94,48 @@ export const translations = {
     en: "Configure Quote",
   },
 
+  // ─── Email Forwarding ───
+  "email.title": {
+    es: "O reenvíe su correo de tarifas",
+    en: "Or forward your carrier email",
+  },
+  "email.subtitle": {
+    es: "Reenvíe correos con tarifas de carriers directamente a:",
+    en: "Forward carrier rate emails directly to:",
+  },
+  "email.copied": {
+    es: "¡Copiado!",
+    en: "Copied!",
+  },
+  "email.copy": {
+    es: "Copiar",
+    en: "Copy",
+  },
+  "email.howItWorks": {
+    es: "El sistema extraerá las tarifas automáticamente en 30-60 segundos",
+    en: "Rates will be extracted automatically in 30-60 seconds",
+  },
+  "email.jobPending": {
+    es: "Correo recibido, en cola...",
+    en: "Email received, queued...",
+  },
+  "email.jobProcessing": {
+    es: "Extrayendo tarifas del correo...",
+    en: "Extracting rates from email...",
+  },
+  "email.jobDone": {
+    es: "{count} tarifa(s) extraída(s) del correo",
+    en: "{count} rate(s) extracted from email",
+  },
+  "email.jobFailed": {
+    es: "Error procesando correo",
+    en: "Error processing email",
+  },
+  "email.recentJobs": {
+    es: "Correos recientes",
+    en: "Recent emails",
+  },
+
   // ─── Configure Step ───
   "configure.title": {
     es: "Configurar Cotización",

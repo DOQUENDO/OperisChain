@@ -12,6 +12,7 @@ import {
   quotes,
   quoteLines,
   documents,
+  ingestionJobs,
   type Rate,
   type FreightMode,
 } from "./schema";
@@ -178,5 +179,57 @@ export async function getQuotesByClient(clientId: string) {
       lines: true,
     },
     orderBy: desc(quotes.generatedAt),
+  });
+}
+
+// ─── Ingestion Jobs ───
+
+/**
+ * Create a new ingestion job (pending status).
+ */
+export async function createIngestionJob(
+  job: typeof ingestionJobs.$inferInsert,
+) {
+  const [inserted] = await db.insert(ingestionJobs).values(job).returning();
+  return inserted;
+}
+
+/**
+ * Update an ingestion job's status and optional fields.
+ */
+export async function updateIngestionJob(
+  jobId: string,
+  updates: Partial<{
+    status: "pending" | "processing" | "done" | "failed";
+    documentId: string;
+    ratesExtracted: number;
+    errorMessage: string;
+  }>,
+) {
+  const [updated] = await db
+    .update(ingestionJobs)
+    .set({ ...updates, updatedAt: new Date() })
+    .where(eq(ingestionJobs.id, jobId))
+    .returning();
+  return updated;
+}
+
+/**
+ * Get an ingestion job by ID.
+ */
+export async function getIngestionJob(jobId: string) {
+  return db.query.ingestionJobs.findFirst({
+    where: eq(ingestionJobs.id, jobId),
+  });
+}
+
+/**
+ * Get recent ingestion jobs for a client (for polling).
+ */
+export async function getRecentIngestionJobs(clientId: string, limit = 10) {
+  return db.query.ingestionJobs.findMany({
+    where: eq(ingestionJobs.clientId, clientId),
+    orderBy: desc(ingestionJobs.createdAt),
+    limit,
   });
 }
