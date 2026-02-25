@@ -593,6 +593,498 @@ ul {
 }
 
 /* ═══════════════════════════════════════
+   HERO ANIMATED PRODUCT MOCK
+   ═══════════════════════════════════════ */
+
+/* Stage container — holds all 4 scenes */
+.hero-animation-stage {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  height: 420px;
+  border-radius: var(--radius-xl);
+  background: #0f1115;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(0, 212, 255, 0.06);
+}
+
+/* Each scene is absolutely positioned, stacked */
+.hero-scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+/* ── Overlay micro text (scene captions) ── */
+.hero-overlay-text {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  padding: 0 1.5rem;
+}
+
+/* ── Shared mock card base ── */
+.mock-card {
+  width: 100%;
+  max-width: 440px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+/* Mock card title bar */
+.mock-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mock-card-header-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mock-card-header-dot--red {
+  background: #ef4444;
+}
+.mock-card-header-dot--yellow {
+  background: #f59e0b;
+}
+.mock-card-header-dot--green {
+  background: #22c55e;
+}
+
+.mock-card-header-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: 0.35rem;
+  font-family: var(--font-mono);
+}
+
+.mock-card-body {
+  padding: 1.2rem 1rem;
+}
+
+/* ─── SCENE 1: Email ─── */
+.email-subject {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 0.75rem;
+}
+
+.email-subject-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(0, 212, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.email-subject-icon::after {
+  content: "";
+  width: 12px;
+  height: 9px;
+  border: 2px solid var(--accent-primary);
+  border-radius: 1px;
+  border-top: 3px solid var(--accent-primary);
+}
+
+.email-subject-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.email-subject-text span {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.email-body-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+.email-body-line {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.email-body-line:nth-child(1) {
+  width: 90%;
+}
+.email-body-line:nth-child(2) {
+  width: 75%;
+}
+.email-body-line:nth-child(3) {
+  width: 60%;
+}
+
+.email-forward {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+}
+
+.email-forward::before {
+  content: "→";
+  font-size: 0.8rem;
+}
+
+/* Animated cursor */
+.hero-cursor {
+  position: absolute;
+  width: 14px;
+  height: 18px;
+  z-index: 5;
+  top: 55%;
+  left: 35%;
+}
+
+.hero-cursor::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--text-primary);
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid var(--text-primary);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
+}
+
+/* ─── SCENE 2: Dashboard Extraction ─── */
+.dash-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dash-field:last-child {
+  border-bottom: none;
+}
+
+.dash-field-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+}
+
+.dash-field-value {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dash-field-value--accent {
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+}
+
+.dash-field-value--success {
+  color: var(--success);
+}
+
+/* ─── SCENE 3: PDF Generation ─── */
+.scene3-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 440px;
+}
+
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  background: var(--accent-gradient);
+  color: var(--bg-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  border: none;
+  cursor: default;
+  letter-spacing: 0.01em;
+}
+
+.pdf-btn::before {
+  content: "↓";
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.pdf-preview {
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.pdf-preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pdf-preview-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.pdf-preview-badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(34, 197, 94, 0.15);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--success);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+}
+
+.pdf-preview-body {
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pdf-line {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.pdf-line:nth-child(1) {
+  width: 65%;
+}
+.pdf-line:nth-child(2) {
+  width: 90%;
+}
+.pdf-line:nth-child(3) {
+  width: 80%;
+}
+.pdf-line:nth-child(4) {
+  width: 50%;
+}
+
+.pdf-table-mock {
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+
+.pdf-table-row {
+  display: flex;
+  padding: 0.35rem 0.6rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.pdf-table-row:last-child {
+  border-bottom: none;
+}
+
+.pdf-table-row--header {
+  background: rgba(0, 212, 255, 0.06);
+}
+
+.pdf-table-cell {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.pdf-table-row--header .pdf-table-cell {
+  background: rgba(0, 212, 255, 0.15);
+}
+
+/* ─── SCENE 4: Dashboard Overview ─── */
+.overview-card {
+  width: 100%;
+  max-width: 440px;
+}
+
+.overview-section-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 0.75rem 0.3rem;
+  font-family: var(--font-mono);
+}
+
+.overview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.overview-row:last-child {
+  border-bottom: none;
+}
+
+.overview-row-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.overview-route {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.overview-carrier {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.overview-rate {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+}
+
+.overview-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.overview-status-dot--active {
+  background: var(--success);
+  box-shadow: 0 0 6px var(--success);
+}
+
+.overview-status-dot--warning {
+  background: var(--warning);
+  box-shadow: 0 0 6px var(--warning);
+}
+
+/* Expiring badge */
+.overview-expiry-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.5rem 0.75rem 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--danger);
+  font-family: var(--font-mono);
+}
+
+.overview-expiry-badge::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--danger);
+}
+
+/* ── Responsive: Hero animation ── */
+@media (max-width: 900px) {
+  .hero-animation-stage {
+    max-width: 100%;
+    height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-animation-stage {
+    height: 320px;
+  }
+
+  .hero-scene {
+    padding: 1.2rem;
+  }
+
+  .mock-card-body {
+    padding: 0.8rem 0.75rem;
+  }
+
+  .hero-overlay-text {
+    font-size: 0.74rem;
+    bottom: 14px;
+  }
+}
+
+/* ═══════════════════════════════════════
    PROBLEM SECTION
    ═══════════════════════════════════════ */
 .problem {

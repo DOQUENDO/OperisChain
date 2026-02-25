@@ -242,23 +242,23 @@ function getUnitLabel(unitType?: string): string {
  */
 function sanitizeText(text: string): string {
   return text
-    .replace(/\u2192|\u2794|\u279C|\u27A1/g, " -> ")   // → arrows
-    .replace(/\u2190/g, "<- ")                           // ←
-    .replace(/\u2605|\u2B50/g, "* ")                     // ★ ⭐
-    .replace(/\u26A0\uFE0F?/g, "! ")                     // ⚠️
-    .replace(/\u2014/g, " - ")                            // — em dash
-    .replace(/\u2013/g, "-")                              // – en dash
-    .replace(/\u2018|\u2019/g, "'")                       // '' smart quotes
-    .replace(/\u201C|\u201D/g, '"')                       // "" smart quotes
-    .replace(/\u2022/g, "- ")                             // • bullet
-    .replace(/\u00B7/g, ".")                              // · middle dot
-    .replace(/\u2026/g, "...")                            // … ellipsis
-    .replace(/\u00A0/g, " ")                              // non-breaking space
-    .replace(/\u2713|\u2714/g, "[OK] ")                   // ✓ ✔
-    .replace(/\u2717|\u2718/g, "[X] ")                    // ✗ ✘
-    .replace(/\u00BD/g, "1/2")                            // ½
-    .replace(/\u00BC/g, "1/4")                            // ¼
-    .replace(/\u00BE/g, "3/4");                           // ¾
+    .replace(/\u2192|\u2794|\u279C|\u27A1/g, " -> ") // → arrows
+    .replace(/\u2190/g, "<- ") // ←
+    .replace(/\u2605|\u2B50/g, "* ") // ★ ⭐
+    .replace(/\u26A0\uFE0F?/g, "! ") // ⚠️
+    .replace(/\u2014/g, " - ") // — em dash
+    .replace(/\u2013/g, "-") // – en dash
+    .replace(/\u2018|\u2019/g, "'") // '' smart quotes
+    .replace(/\u201C|\u201D/g, '"') // "" smart quotes
+    .replace(/\u2022/g, "- ") // • bullet
+    .replace(/\u00B7/g, ".") // · middle dot
+    .replace(/\u2026/g, "...") // … ellipsis
+    .replace(/\u00A0/g, " ") // non-breaking space
+    .replace(/\u2713|\u2714/g, "[OK] ") // ✓ ✔
+    .replace(/\u2717|\u2718/g, "[X] ") // ✗ ✘
+    .replace(/\u00BD/g, "1/2") // ½
+    .replace(/\u00BC/g, "1/4") // ¼
+    .replace(/\u00BE/g, "3/4"); // ¾
 }
 
 // ═══════════════════════════════════════
@@ -391,7 +391,9 @@ function drawHeader(
     align: "right",
   });
   doc.text(
-    sanitizeText(`${l.date}: ${new Date(quote.generatedAt).toLocaleDateString(locale === "es" ? "es-CO" : "en-US", { year: "numeric", month: "long", day: "numeric" })}`),
+    sanitizeText(
+      `${l.date}: ${new Date(quote.generatedAt).toLocaleDateString(locale === "es" ? "es-CO" : "en-US", { year: "numeric", month: "long", day: "numeric" })}`,
+    ),
     rightX,
     20,
     { align: "right" },
@@ -433,7 +435,9 @@ function drawMetadata(
   const metaItems = [
     {
       label: l.route,
-      value: sanitizeText(`${quote.cargo.origin} -> ${quote.cargo.destination}`),
+      value: sanitizeText(
+        `${quote.cargo.origin} -> ${quote.cargo.destination}`,
+      ),
     },
     { label: l.weight, value: `${quote.cargo.weightKg.toLocaleString()} kg` },
     { label: l.urgency, value: getUrgencyLabel(quote.cargo.urgency, l) },
@@ -651,7 +655,9 @@ function drawRecommendation(
     doc.setFontSize(12);
     doc.setTextColor(...COLORS.white);
     doc.text(
-      sanitizeText(`${quote.recommended} - ${formatCurrency(recommendedLine.totalPriceUSD ?? recommendedLine.priceUSD)}`),
+      sanitizeText(
+        `${quote.recommended} - ${formatCurrency(recommendedLine.totalPriceUSD ?? recommendedLine.priceUSD)}`,
+      ),
       margin + 8,
       y + 14,
     );

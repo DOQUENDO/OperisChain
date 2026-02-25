@@ -19,6 +19,7 @@ import { QuoteTable, type QuoteDisplay } from '@/components/quote-table';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { useTranslation } from '@/lib/i18n';
 import { FileText, Zap, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
+import Image from 'next/image';
 import type { FreightMode } from '@/lib/db/schema';
 
 // Demo client ID for development (seeded test client)
@@ -161,9 +162,7 @@ export default function QuotesPage() {
             <header className="border-b border-white/10 bg-[#0c0c14]">
                 <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
-                            <Zap size={18} className="text-white" />
-                        </div>
+                        <Image src="/logo-icon.png" alt="OperisChain Logo" width={32} height={32} />
                         <div>
                             <h1 className="text-lg font-bold">
                                 Operis<span className="text-cyan-400">Chain</span>
