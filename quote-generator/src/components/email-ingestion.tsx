@@ -7,7 +7,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslation } from "@/lib/i18n";
 import {
     useEmailJobs,
@@ -39,17 +39,27 @@ export function EmailIngestion({ clientId, onRatesReady }: EmailIngestionProps) 
         enabled: true,
     });
 
-    // Notify parent when a job completes with rates
-    const recentDone = jobs.find(
-        (j) =>
-            j.status === "done" &&
-            j.ratesExtracted &&
-            j.ratesExtracted > 0 &&
-            Date.now() - new Date(j.updatedAt).getTime() < 10_000,
+    // Track which jobs we've already notified about to prevent re-firing
+    const notifiedJobIds = useRef<Set<string>>(new Set());
+    const stableOnRatesReady = useCallback(
+        (job: IngestionJob) => onRatesReady?.(job),
+        [onRatesReady],
     );
-    if (recentDone && onRatesReady) {
-        onRatesReady(recentDone);
-    }
+
+    // Notify parent when a job completes with rates (in useEffect, not during render)
+    useEffect(() => {
+        const recentDone = jobs.find(
+            (j) =>
+                j.status === "done" &&
+                j.ratesExtracted &&
+                j.ratesExtracted > 0 &&
+                !notifiedJobIds.current.has(j.jobId),
+        );
+        if (recentDone) {
+            notifiedJobIds.current.add(recentDone.jobId);
+            stableOnRatesReady(recentDone);
+        }
+    }, [jobs, stableOnRatesReady]);
 
     const handleCopy = async () => {
         try {
