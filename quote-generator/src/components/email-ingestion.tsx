@@ -23,7 +23,7 @@ import {
     Clock,
 } from "lucide-react";
 
-const INBOUND_EMAIL = "rates@operischain.com";
+const INBOUND_EMAIL = "diego.oquendo@operischain.com";
 
 interface EmailIngestionProps {
     clientId: string;
