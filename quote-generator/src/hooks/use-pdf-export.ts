@@ -38,11 +38,7 @@ export function usePdfExport(): UsePdfExportReturn {
   const clearError = useCallback(() => setError(null), []);
 
   const exportPdf = useCallback(
-    async (
-      quote: QuoteDisplay,
-      locale: Locale,
-      options: PdfOptions = {},
-    ) => {
+    async (quote: QuoteDisplay, locale: Locale, options: PdfOptions = {}) => {
       setIsExporting(true);
       setError(null);
 

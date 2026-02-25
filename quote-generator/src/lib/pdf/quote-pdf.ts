@@ -198,9 +198,7 @@ function getConfidenceLabel(score: number, l: PdfLabels): string {
   return l.confidenceLow;
 }
 
-function getConfidenceColor(
-  score: number,
-): [number, number, number] {
+function getConfidenceColor(score: number): [number, number, number] {
   if (score >= 0.8) return COLORS.green;
   if (score >= 0.5) return COLORS.yellow;
   return COLORS.red;
@@ -246,12 +244,7 @@ export function generateQuotePdf(
   locale: Locale,
   options: PdfOptions = {},
 ): Blob | string | void {
-  const {
-    action = "save",
-    filename,
-    clientName,
-    clientCompany,
-  } = options;
+  const { action = "save", filename, clientName, clientCompany } = options;
 
   const l = labels[locale];
   const doc = new jsPDF({
@@ -334,9 +327,15 @@ function drawHeader(
   const lineWidth = pageWidth / gradientSteps;
   for (let i = 0; i < gradientSteps; i++) {
     const ratio = i / gradientSteps;
-    const r = Math.round(COLORS.primary[0] + (COLORS.secondary[0] - COLORS.primary[0]) * ratio);
-    const g = Math.round(COLORS.primary[1] + (COLORS.secondary[1] - COLORS.primary[1]) * ratio);
-    const b = Math.round(COLORS.primary[2] + (COLORS.secondary[2] - COLORS.primary[2]) * ratio);
+    const r = Math.round(
+      COLORS.primary[0] + (COLORS.secondary[0] - COLORS.primary[0]) * ratio,
+    );
+    const g = Math.round(
+      COLORS.primary[1] + (COLORS.secondary[1] - COLORS.primary[1]) * ratio,
+    );
+    const b = Math.round(
+      COLORS.primary[2] + (COLORS.secondary[2] - COLORS.primary[2]) * ratio,
+    );
     doc.setFillColor(r, g, b);
     doc.rect(i * lineWidth, 44, lineWidth + 0.5, 2.5, "F");
   }
@@ -406,7 +405,10 @@ function drawMetadata(
   doc.roundedRect(margin, y - 3, contentWidth, 18, 2, 2, "F");
 
   const metaItems = [
-    { label: l.route, value: `${quote.cargo.origin} → ${quote.cargo.destination}` },
+    {
+      label: l.route,
+      value: `${quote.cargo.origin} → ${quote.cargo.destination}`,
+    },
     { label: l.weight, value: `${quote.cargo.weightKg.toLocaleString()} kg` },
     { label: l.urgency, value: getUrgencyLabel(quote.cargo.urgency, l) },
     {
@@ -467,7 +469,17 @@ function drawCarrierTable(
   const sortedLines = [...quote.lines].sort((a, b) => b.score - a.score);
 
   const tableHead = [
-    ["", l.carrier, l.routeCol, l.price, l.unitPrice, l.transit, l.validUntil, l.confidence, l.score],
+    [
+      "",
+      l.carrier,
+      l.routeCol,
+      l.price,
+      l.unitPrice,
+      l.transit,
+      l.validUntil,
+      l.confidence,
+      l.score,
+    ],
   ];
 
   const tableBody = sortedLines.map((line) => {
@@ -515,11 +527,21 @@ function drawCarrierTable(
       halign: "left",
     },
     columnStyles: {
-      0: { cellWidth: 8, halign: "center", fontSize: 10, textColor: COLORS.primary },
+      0: {
+        cellWidth: 8,
+        halign: "center",
+        fontSize: 10,
+        textColor: COLORS.primary,
+      },
       1: { fontStyle: "bold", cellWidth: 35 },
       2: { cellWidth: 30 },
       3: { halign: "right", fontStyle: "bold", cellWidth: 28 },
-      4: { halign: "right", fontSize: 7, textColor: COLORS.textMuted, cellWidth: 25 },
+      4: {
+        halign: "right",
+        fontSize: 7,
+        textColor: COLORS.textMuted,
+        cellWidth: 25,
+      },
       5: { halign: "center", cellWidth: 22 },
       6: { halign: "center", cellWidth: 25 },
       7: { halign: "center", cellWidth: 22 },
@@ -539,9 +561,7 @@ function drawCarrierTable(
 
         // Confidence column color
         if (data.column.index === 7 && line) {
-          data.cell.styles.textColor = getConfidenceColor(
-            line.confidenceScore,
-          );
+          data.cell.styles.textColor = getConfidenceColor(line.confidenceScore);
         }
 
         // Score column color
